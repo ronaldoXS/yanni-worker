@@ -451,9 +451,9 @@ window.render=function(){
   let html='';
   cats.forEach(cat=>{
     const items=list.filter(p=>p.cat===cat&&p.disponivel!==false);if(!items.length)return;
-    html+=\`<div class="sec-title">${cat}</div><div class="grid">\`;
+    html+='<div class="sec-title">'+cat+'</div><div class="grid">';
     items.forEach(p=>{
-      html+=\`<div class="pcard"><button class="btn-del" onclick="delProd('${p.id}')">✕</button><button class="btn-edt" onclick="editProd('${p.id}')">✏️</button><img class="pimg" src="${p.img||'https://placehold.co/400x148/1a1a1a/444?text=Sem+foto'}" onerror="this.src='https://placehold.co/400x148/1a1a1a/444?text=Sem+foto'"><div class="pinfo"><div class="pname">${p.nome}</div><div class="pdesc">${p.desc||''}</div><div class="pfoot"><span class="ppreco">${fmt(p.preco)}</span><button class="btn-add" onclick="addCart('${p.id}')">+ Pedido</button></div></div></div>\`;
+      html+='<div class="pcard"><button class="btn-del" onclick="delProd(\''+p.id+'\')">✕</button><button class="btn-edt" onclick="editProd(\''+p.id+'\')">✏️</button><img class="pimg" src="'+( p.img||'https://placehold.co/400x148/1a1a1a/444?text=Sem+foto')+'" onerror="this.src=\'https://placehold.co/400x148/1a1a1a/444?text=Sem+foto\'"><div class="pinfo"><div class="pname">'+p.nome+'</div><div class="pdesc">'+( p.desc||'')+'</div><div class="pfoot"><span class="ppreco">'+fmt(p.preco)+'</span><button class="btn-add" onclick="addCart(\''+p.id+'\')">+ Pedido</button></div></div></div>';
     });html+='</div>';
   });
   wrap.innerHTML=html||'<p style="text-align:center;color:#555;margin-top:30px;">Nenhum item.</p>';buildCatBar();
